@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: michapp
+    release: RELEASE_NAME
+  name: michapp-svc
+spec:
+  ports:
+  - name: appport
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: michapp
+  sessionAffinity: None
+  type: NodePort
