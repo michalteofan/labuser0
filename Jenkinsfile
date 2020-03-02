@@ -18,6 +18,7 @@ podTemplate(label: 'buildpod', cloud: cloud, serviceAccount: serviceAccount, nam
         hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
     ],
     containers: [
+        containerTemplate(name: 'jnlp'   , image: 'nm-mgmt.iic.pl.ibm.com:8500/labns/jenkppc64-slave-jnlp:latest', args: '${computer.jnlpmac} ${computer.name}'),
         containerTemplate(name: 'kubectl', image: 'nm-mgmt.iic.pl.ibm.com:8500/labns/kubectl:v1.13.9', ttyEnabled: true, command: 'cat'),
         containerTemplate(name: 'docker' , image: 'nm-mgmt.iic.pl.ibm.com:8500/labns/docker:latest', ttyEnabled: true, command: 'cat'),
     ]
