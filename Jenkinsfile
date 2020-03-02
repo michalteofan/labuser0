@@ -59,7 +59,6 @@ podTemplate(label: 'buildpod', cloud: cloud, serviceAccount: serviceAccount, nam
                     sed -i 's/BUILD_NUMBER/${env.BUILD_NUMBER}/g' michapp-svc.yaml
                     sed -i 's/APPNAME/${env.APPNAME}/g' michapp-svc.yaml
                     kubectl apply -f michapp-svc.yaml
-                    exit 0
                 fi
                 echo 'Service created'                
                 kubectl --namespace=${env.NAMESPACE} describe service -l app=michapp-${env.APPNAME}
@@ -73,7 +72,6 @@ podTemplate(label: 'buildpod', cloud: cloud, serviceAccount: serviceAccount, nam
                     sed -i 's/BUILD_NUMBER/${env.BUILD_NUMBER}/g' michapp-ing.yaml
                     sed -i 's/APPNAME/${env.APPNAME}/g' michapp-ing.yaml
                     kubectl apply -f michapp-ing.yaml
-                    exit 0
                 fi
 
                 DEPLOYMENT=`kubectl --namespace=${env.NAMESPACE} get deployments -l app=michapp-${env.APPNAME} -o name`
@@ -85,7 +83,6 @@ podTemplate(label: 'buildpod', cloud: cloud, serviceAccount: serviceAccount, nam
                     sed -i 's/BUILD_NUMBER/${env.BUILD_NUMBER}/g' michapp-deploy.yaml
                     sed -i 's/APPNAME/${env.APPNAME}/g' michapp-deploy.yaml
                     kubectl apply -f michapp-deploy.yaml
-                    exit 0
                 fi
                 kubectl --namespace=${env.NAMESPACE} set image \${DEPLOYMENT} michapp=${env.REGISTRY}/${env.NAMESPACE}/michapp-${env.APPNAME}:${env.BUILD_NUMBER}
                 kubectl --namespace=${env.NAMESPACE} rollout status \${DEPLOYMENT}
