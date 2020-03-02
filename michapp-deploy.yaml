@@ -4,7 +4,7 @@ metadata:
   name: michapp
   labels:
     app: michapp
-    release: RELEASE_NAME
+    release: APPNAME
 spec:
   selector:
     matchLabels:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: michapp
-        image: nm-mgmt.iic.pl.ibm.com:8500/default/michapp:BUILD_NUMBER
+        image: nm-mgmt.iic.pl.ibm.com:8500/default/michapp-APPNAME:BUILD_NUMBER
         ports:
         - containerPort: 80
           name: appport
