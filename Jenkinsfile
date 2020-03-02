@@ -2,15 +2,15 @@
 def cloud = env.CLOUD ?: "kubernetes"
 def registryCredsID = env.REGISTRY_CREDENTIALS ?: "clusterreg"
 def serviceAccount = env.SERVICE_ACCOUNT ?: "default"
-def releaseName = env.RELEASE_NAME ?: "releaseName"
+def releasename = env.RELEASE_NAME ?: "releasename"
 def namespace = env.NAMESPACE ?: "namespace"
 def registry = env.REGISTRY ?: "nm-mgmt.iic.pl.ibm.com:8500"
 def nodeSelector = env.NODE_SELECTOR ?: "beta.kubernetes.io/arch=ppc64le"
 
-podTemplate(label: 'buildpod', cloud: cloud, serviceAccount: serviceAccount, namespace: namespace, nodeSelector: nodeSelector, releaseName: releaseName, envVars: [
+podTemplate(label: 'buildpod', cloud: cloud, serviceAccount: serviceAccount, namespace: namespace, nodeSelector: nodeSelector, releasename: releasename, envVars: [
         envVar(key: 'NAMESPACE', value: namespace),
         envVar(key: 'REGISTRY', value: registry),
-        envVar(key: 'RELEASE_NAME', value: releaseName),
+        envVar(key: 'RELEASE_NAME', value: releasename),
         envVar(key: 'NODE_SELECTOR', value: nodeSelector)
     ],
     volumes: [
