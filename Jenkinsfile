@@ -83,6 +83,7 @@ podTemplate(label: 'buildpod', cloud: cloud, serviceAccount: serviceAccount, nam
                     sed -i 's/BUILD_NUMBER/${env.BUILD_NUMBER}/g' michapp-deploy.yaml
                     sed -i 's/APPNAME/${env.APPNAME}/g' michapp-deploy.yaml
                     kubectl apply -f michapp-deploy.yaml
+                    exit 0
                 fi
                 kubectl --namespace=${env.NAMESPACE} set image \${DEPLOYMENT} michapp=${env.REGISTRY}/${env.NAMESPACE}/michapp-${env.APPNAME}:${env.BUILD_NUMBER}
                 kubectl --namespace=${env.NAMESPACE} rollout status \${DEPLOYMENT}
