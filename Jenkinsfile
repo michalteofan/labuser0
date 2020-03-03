@@ -58,6 +58,7 @@ podTemplate(label: 'buildpod', cloud: cloud, serviceAccount: serviceAccount, nam
                     echo "Creating the service"
                     sed -i 's/BUILD_NUMBER/${env.BUILD_NUMBER}/g' michapp-svc.yaml
                     sed -i 's/APPNAME/${env.APPNAME}/g' michapp-svc.yaml
+                    sed -i 's/NAMESPACE/${env.NAMESPACE}/g' michapp-svc.yaml
                     kubectl apply -f michapp-svc.yaml
                 fi
                 echo 'Service created'                
@@ -75,7 +76,7 @@ podTemplate(label: 'buildpod', cloud: cloud, serviceAccount: serviceAccount, nam
                 fi
 
                 DEPLOYMENT=`kubectl --namespace=${env.NAMESPACE} get deployments -l app=michapp-${env.APPNAME} -o name`
-                kubectl --namespace=${env.NAMESPACE} get deployments             
+                kubectl --namespace=${env.NAMESPACE} get deployments        
                 if [ -z \${DEPLOYMENT} ]; then
                     # No deployment to update
                     echo 'No deployment to update'

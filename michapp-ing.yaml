@@ -4,15 +4,15 @@ metadata:
   annotations:
     ingress.kubernetes.io/rewrite-target: /
   labels:
-    app: APPNAME
-  name: APPNAME
+    app: michapp-APPNAME
+  name: michapp-APPNAME
 spec:
   rules:
   - host: APPNAME.cloud.iic.pl.ibm.com
     http:
       paths:
       - backend:
-          serviceName: APPNAME
+          serviceName: michapp-APPNAME
           servicePort: 80
   tls:
   - hosts: 
