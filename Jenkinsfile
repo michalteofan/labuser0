@@ -6,8 +6,9 @@ def appname = env.APPNAME ?: "appname"
 def namespace = env.NAMESPACE ?: "namespace"
 def registry = env.REGISTRY ?: "nm-mgmt.iic.pl.ibm.com:8500"
 def nodeSelector = env.NODE_SELECTOR ?: "beta.kubernetes.io/arch=ppc64le"
+def label = build-for-${env.APPNAME}
 
-podTemplate(label: 'buildpod', cloud: cloud, serviceAccount: serviceAccount, namespace: namespace, nodeSelector: nodeSelector, envVars: [
+podTemplate(label: label, cloud: cloud, serviceAccount: serviceAccount, namespace: namespace, nodeSelector: nodeSelector, envVars: [
         envVar(key: 'NAMESPACE', value: namespace),
         envVar(key: 'REGISTRY', value: registry),
         envVar(key: 'NODE_SELECTOR', value: nodeSelector)
