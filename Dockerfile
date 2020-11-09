@@ -8,8 +8,8 @@ RUN setcap cap_net_bind_service=+epi /usr/sbin/apache2
 RUN mkdir /var/run/apache2
 RUN chgrp -R 0 /var/www/html && \
     chmod -R g=u /var/www/html
-RUN chgrp -R 0 /var/locks && \
-    chmod -R g=u /var/locks
+RUN chgrp -R 0 /var/lock && \
+    chmod -R g=u /var/lock
 RUN chgrp -R 0 && /var/run/apache2 && \
     chmod -R g=u /var/run/apache2
 
