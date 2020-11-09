@@ -1,4 +1,4 @@
-FROM default-route-openshift-image-registry.apps.ocp4.ibm.lab/eu-team1/ubuntu-ppc64l4:latest
+FROM docker.io/ubuntu
 
 RUN apt-get update && apt-get install -y apache2 
 ADD index.html /var/www/html/index.html
