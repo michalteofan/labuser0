@@ -1,4 +1,4 @@
-FROM docker.io/ubuntu
+FROM image-registry.openshift-image-registry.svc:5000/eu-team1/ubuntu-ppc64le
 
 ENV TZ=Europe/Warsaw
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
