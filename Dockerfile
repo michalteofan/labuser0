@@ -12,6 +12,7 @@ RUN chgrp -R 0 /var/lock && \
     chmod -R g=u /var/lock
 RUN chgrp -R 0 /var/run/apache2 && \
     chmod -R g=u /var/run/apache2
+RUN rm -ef /var/lock/apache2*
 
 EXPOSE 80
 
