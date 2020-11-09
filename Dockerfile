@@ -21,4 +21,4 @@ EXPOSE 8080
 
 CMD []
 
-ENTRYPOINT ["sleep", "999999"]
+ENTRYPOINT ["apache2ctl", "-DFOREGROUND"]
